@@ -1,0 +1,498 @@
+{
+    "auth_service": "google",
+    "username": "XXXXX",
+    "password": "XXXXX",
+    "location": "25.007438, 121.498550",
+    "gmapkey": "AIzaSyDYtpO4zyAiqmzQnznbMD33AUCYkQNk6mo",
+    "encrypt_location": "",
+    "websocket_server": false,
+    "heartbeat_threshold": 10,
+    "tasks": [
+      {
+        "type": "HandleSoftBan"
+      },
+      {
+        "type": "SleepSchedule",
+        "config": {
+          "enabled": true,
+          "time": "01:35",
+          "duration":"5:46",
+          "time_random_offset": "00:30",
+          "duration_random_offset": "00:42"
+        }
+      },
+      {
+        "type": "CollectLevelUpReward"
+      },
+      {
+        "type": "IncubateEggs",
+        "config": {
+          "longer_eggs_first": false
+        }
+      },
+      {
+        "type": "UpdateLiveStats",
+        "config": {
+          "enabled": false,
+          "min_interval": 10,
+          "stats": ["username", "uptime", "stardust_earned", "xp_earned", "xp_per_hour", "stops_visited"],
+          "terminal_log": true,
+          "terminal_title": true
+        }
+      },
+      {
+        "type": "TransferPokemon",
+        "config": {
+	        "transfer_wait_min": 1,
+	        "transfer_wait_max": 4
+        }
+      },
+      {
+        "type": "EvolvePokemon",
+        "config": {
+            "// evolve_all": "Pidgey,Weedle,Caterpie",
+            "evolve_all": "none",
+            "first_evolve_by": "cp",
+            "evolve_above_cp": 500,
+            "evolve_above_iv": 0.8,
+            "logic": "or",
+            "evolve_speed": 20,
+            "use_lucky_egg": false
+        }
+      },
+      {
+        "type": "RecycleItems",
+        "config": {
+          "min_empty_space": 15,
+          "max_balls_keep": 150,
+          "max_potions_keep": 50,
+          "max_berries_keep": 70,
+          "max_revives_keep": 70,
+          "item_filter": {
+            "Pokeball":       { "keep" : 100 },
+            "Greatball":      { "keep" : 80 },
+            "Ultraball":      { "keep" : 80 },
+            "Potion":         { "keep" : 10 },
+            "Super Potion":   { "keep" : 20 },
+            "Hyper Potion":   { "keep" : 30 },
+            "Max Potion":     { "keep" : 100 },
+            "Revive":         { "keep" : 30 },
+            "Razz Berry":     { "keep" : 60 }
+          },
+          "recycle_wait_min": 1,
+          "recycle_wait_max": 4
+        }
+	  },
+	  {
+		  "type": "CatchPokemon",
+		  "config": {
+			  "catch_visible_pokemon": true,
+			  "catch_lured_pokemon": true,
+			  "min_ultraball_to_keep": 5,
+			  "catch_throw_parameters": {
+				  "excellent_rate": 0.1,
+				  "great_rate": 0.5,
+				  "nice_rate": 0.3,
+				  "normal_rate": 0.1,
+				  "spin_success_rate" : 0.5
+			  },
+			  "catch_simulation": {
+				  "flee_count": 4,
+				  "flee_duration": 3,
+				  "catch_wait_min": 2,
+				  "catch_wait_max": 6,
+				  "berry_wait_min": 2,
+				  "berry_wait_max": 3,
+				  "changeball_wait_min": 2,
+				  "changeball_wait_max": 3
+			  }
+		  }
+	  },
+	  {
+        "type": "SpinFort",
+        "config": {
+          "spin_wait_min": 2,
+          "spin_wait_max": 3
+        }
+      },
+      {
+        "type": "MoveToFort",
+        "config": {
+            "lure_attraction": true,
+            "lure_max_distance": 100
+        }
+      },
+      {
+        "type": "NicknamePokemon",
+        "config": {
+          "enabled": true,
+			"nickname_template": "{name:.8s}_{iv_pct}",
+			"dont_nickname_favorite": false
+
+        }
+      },
+      {
+        "type": "FollowSpiral",
+        "config": {
+          "diameter": 4,
+          "step_size": 70
+        }
+      }
+    ],
+    "map_object_cache_time": 5,
+    "forts": {
+      "avoid_circles": true,
+      "max_circle_size": 50,
+      "cache_recent_forts": true
+    },
+    "// walk": 4.16,
+    "walk_max": 4.16,
+    "walk_min": 2.16,
+    "action_wait_min": 1,
+    "action_wait_max": 4,
+    "debug": false,
+    "test": false,
+    "health_record": false,
+    "location_cache": false,
+    "distance_unit": "km",
+    "reconnecting_timeout": 15,
+    "evolve_captured": "NONE",
+    "catch_randomize_reticle_factor": 0.5,
+    "catch_randomize_spin_factor": 0.5,
+    "min_ultraball_to_keep": 10,
+    "logging_color": true,
+    "catch": {
+      "any": {"catch_above_cp": 0, "catch_above_iv": 0, "logic": "or"},
+      "// Example of always catching Rattata:": {},
+      "// Rattata": { "always_catch" : true }
+    },
+    "catch_throw_parameters": {
+      "excellent_rate": 0.1,
+      "great_rate": 0.5,
+      "nice_rate": 0.3,
+      "normal_rate": 0.1,
+      "spin_success_rate" : 0.6
+    },
+    "release": {
+      "// any": {"release_below_cp": 0, "release_below_iv": 0, "logic": "or"},
+      "// Example of always releasing Rattata:": {},
+      "// Rattata": {"always_release": true},
+      "// Example of keeping 3 stronger (based on CP) Pidgey:": {},
+      "// Pidgey": {"keep_best_cp": 3},
+      "// Also, it is working with any": {},
+      "// any": {"keep_best_iv": 3},
+      "// Example of keeping the 2 strongest (based on CP) and 3 best (based on IV) Zubat:": {},
+      "// Zubat": {"keep_best_cp": 2, "keep_best_iv": 3},
+      "any": {"keep_best_cp": 2, "keep_best_iv": 3},
+      "Eevee": {"always_release": false},
+      "Pikachu": {"always_release": false},
+      "Raichu": {"always_release": false},
+
+      "// ** Release **": {},
+      "// Legendary pokemons (Goes under S-Tier)": {},
+      "// 拉普拉斯": {},
+      "Lapras": {"always_release": false},
+      "// 火焰鳥": {},
+      "Moltres": {"always_release": false},
+      "// 閃電鳥": {},
+      "Zapdos": {"always_release": false},
+      "// 急凍鳥": {},
+      "Articuno": {"always_release": false},
+
+      "// S-Tier pokemons (if pokemon can be evolved into tier, list the representative)": {},
+      "// 超夢": {},
+      "Mewtwo": {"always_release": false},
+      "// 快龍": {},
+      "Dragonite": {"always_release": false},
+      "// 卡比獸": {},
+      "Snorlax": {"always_release": false},
+      "// 夢夢 Mew evolves to Mewtwo": {},
+      "Mew": {"always_release": false},
+      "// 風速狗": {},
+      "Arcanine": {"always_release": false},
+      "// 水伊布": {},
+      "Vaporeon": {"always_release": false},
+      "// 暴鯉龍": {},
+      "Gyarados": {"always_release": false},
+      "// 椰蛋樹": {},
+      "Exeggutor": {"always_release": false},
+      "// 臭臭泥": {},
+      "Muk": {"always_release": false},
+      "// 雙彈瓦斯": {},
+      "Weezing": {"always_release": false},
+      "// 火伊布": {},
+      "Flareon": {"always_release": false},
+
+      "// A-Tier pokemons": {},
+      "// 雷伊布": {},
+      "Jolteon": {"always_release": false},
+      "// 呆河馬": {},
+      "Slowbro": {"release_below_iv": 0.8, "logic": "or"},
+      "// 大食花": {},
+      "Victreebel": {"release_below_iv": 0.8, "logic": "or"},
+      "// 怪": {},
+      "Machamp": {"release_below_iv": 0.8, "logic": "or"},
+      "// 蚊香泳士": {},
+      "Poliwrath": {"release_below_iv": 0.8, "logic": "or"},
+      "// 皮可西": {},
+      "Clefable": {"release_below_iv": 0.8, "logic": "or"},
+      "// 尼多王": {},
+      "Nidoking": {"release_below_iv": 0.8, "logic": "or"},
+      "// 妙蛙花": {},
+      "Venusaur": {"release_below_iv": 0.8, "logic": "or"},
+      "// 噴火龍": {},
+      "// Charizard": {"release_below_iv": 0.8, "logic": "or"},
+      "// 哥達鴨": {},
+      "Golduck": {"release_below_iv": 0.8, "logic": "or"},
+      "// 尼多后": {},
+      "Nidoqueen": {"release_below_iv": 0.8, "logic": "or"},
+      "// 霸王花": {},
+      "Vileplume": {"release_below_iv": 0.8, "logic": "or"},
+      "// 水箭龜": {},
+      "Blastoise": {"release_below_iv": 0.8, "logic": "or"},
+      "// 多刺菊石獸": {},
+      "Omastar": {"release_below_iv": 0.8, "logic": "or"},
+      "// 化石翼龍": {},
+      "// Aerodactyl": {"release_below_iv": 0.8, "logic": "or"},
+      "// 隆隆岩": {},
+      "// Golem": {"release_below_iv": 0.8, "logic": "or"},
+      "// 胖可丁": {},
+      "// Wigglytuff": {"release_below_iv": 0.8, "logic": "or"},
+      "// 白海獅": {},
+      "// Dewgong": {"release_below_iv": 0.8, "logic": "or"},
+      "// 九尾": {},
+      "// Ninetales": {"release_below_iv": 0.8, "logic": "or"},
+      "// 鴨嘴火獸": {},
+      "// Magmar": {"release_below_iv": 0.8, "logic": "or"},
+      "Magmar": {"release_below_iv": 0.7, "release_below_cp": 1200, "logic": "or"},
+      "// 鐮刀盔": {},
+      "// Kabutops": {"release_below_iv": 0.8, "logic": "or"},
+      "// 電擊獸": {},
+      "// Electabuzz": {"release_below_iv": 0.8, "logic": "or"},
+      "// 寶石海星": {},
+      "// Starmie": {"release_below_iv": 0.8, "logic": "or"},
+      "Starmie": {"release_below_iv": 0.9, "logic": "or"},
+      "// 雷伊布": {},
+      "// Jolteon": {"release_below_iv": 0.8, "logic": "or"},
+      "// 烈焰馬": {},
+      "// Rapidash": {"release_below_iv": 0.8, "logic": "or"},
+      "// 大甲": {},
+      "// Pinsir": {"release_below_iv": 0.8, "logic": "or"},
+      "Pinsir": {"release_below_iv": 0.96, "release_below_cp": 1300, "logic": "or"},
+      "// 飛天螳螂": {},
+      "// Scyther": {"release_below_iv": 0.8, "logic": "or"},
+      "Scyther": {"release_below_iv": 0.9, "release_below_cp": 760, "logic": "or"},
+      "// 毒刺水母": {},
+      "Tentacruel": {"release_below_iv": 0.8, "logic": "or"},
+      "// 耿鬼": {},
+      "Gengar": {"release_below_iv": 0.8, "logic": "or"},
+      "// 素利柏": {},
+      "// Hypno": {"release_below_iv": 0.8, "logic": "or"},
+      "// 大比鳥": {},
+      "// Pidgeot": {"release_below_iv": 0.8, "logic": "or"},
+      "// 鑽角犀獸": {},
+      "// Rhydon": {"release_below_iv": 0.8, "logic": "or"},
+      "// 金魚王": {},
+      "Seaking": {"release_below_iv": 0.8, "logic": "or"},
+      "// 袋獸": {},
+      "// Kangaskhan": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// Koffing evolves to Weezing (A-Tier)": {},
+      "Koffing": {"release_below_iv": 0.8, "logic": "or"},
+
+
+
+
+
+      "// ** Joe **": {},
+      "// 妙蛙種子": {},
+      "Bulbasaur": {"release_below_iv": 0.6, "logic": "or"},
+      "// 妙蛙草": {},
+      "Ivysaur": {"release_below_iv": 0.6, "logic": "or"},
+
+      "// 傑尼龜": {},
+      "Squirtle": {"release_below_iv": 0.8, "logic": "or"},
+      "// 卡咪龜": {},
+      "Wartortle": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 綠毛蟲 升級用": {},
+      "// Caterpie": {"release_below_iv": 0.8, "logic": "or"},
+      "Caterpie": {"keep_best_iv": 25},
+      "// 鐵甲蟲": {},
+      "Metapod": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 獨角蟲 升級用": {},
+      "// Weedle": {"release_below_iv": 0.8, "logic": "or"},
+      "Weedle": {"keep_best_iv": 25},
+      "// 鐵殼蛹": {},
+      "Kakuna": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 波波 升級用": {},
+      "// Pidgey": {"release_below_iv": 0.8, "logic": "or"},
+      "Pidgey": {"keep_best_iv": 25},
+      "// 比比鳥": {},
+      "// Pidgeotto": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 小哥達": {},
+      "Rattata": {"release_below_iv": 0.8, "logic": "or"},
+      "// 哥達": {},
+      "// Raticate": {"keep_best_iv": 2, "logic": "or"},
+
+      "// 鬼雀": {},
+      "Spearow": {"release_below_iv": 0.8, "logic": "or"},
+      "// 魔雀": {},
+      "// Fearow": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 阿柏蛇": {},
+      "Ekans": {"release_below_iv": 0.8, "logic": "or"},
+      "// 阿柏怪": {},
+      "// Arbok": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 尼多蘭": {},
+      "Nidoran F": {"release_below_iv": 0.8, "logic": "or"},
+      "// 尼多娜": {},
+      "// Nidorina": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 尼多朗": {},
+      "Nidoran M": {"release_below_iv": 0.6, "logic": "or"},
+      "// 尼多力諾": {},
+      "Nidorino": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 皮皮": {},
+      "// Clefairy": {"release_below_iv": 0.8, "logic": "or"},
+      "// Clefairy": {"release_below_iv": 0.7, "logic": "or"},
+      "// 皮可西": {},
+      "// Clefable": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 胖丁": {},
+      "// Jigglypuff": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 超音蝠": {},
+      "Zubat": {"release_below_iv": 0.8, "logic": "or"},
+      "// 大嘴蝠": {},
+      "Golbat": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 走路草": {},
+      "Oddish": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 毛球": {},
+      "Venonat": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 地鼠": {},
+      "Diglett": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 可達鴨": {},
+      "Psyduck": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 蚊香蝌蚪": {},
+      "Poliwag": {"release_below_iv": 0.8, "logic": "or"},
+      "// 蚊香蛙": {},
+      "Poliwhirl": {"release_below_iv": 0.8, "logic": "or"},
+      "// 大力蛙": {},
+      "// Poliwrath": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 凱西": {},
+      "Abra": {"always_release": false},
+      "// 勇基拉": {},
+      "Kadabra": {"always_release": false},
+      "// 胡地": {},
+      "Alakazam": {"always_release": false},
+
+      "// 腕力": {},
+      "Machop": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 喇叭芽": {},
+      "Bellsprout": {"release_below_iv": 0.8, "release_below_cp": 600, "logic": "or"},
+
+      "// 瑪瑙水母": {},
+      "Tentacool": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 小拳石": {},
+      "// Geodude": {"release_below_iv": 0.8, "logic": "or"},
+      "Geodude": {"release_below_iv": 0.5, "logic": "or"},
+
+      "// 呆呆獸": {},
+      "Slowpoke": {"release_below_iv": 0.8, "release_below_cp": 660, "logic": "or"},
+
+      "// 多多": {},
+      "// Doduo": {"release_below_iv": 0.8, "logic": "or"},
+      "Doduo": {"release_below_iv": 0.7, "logic": "or"},
+
+      "// 催眠貘": {},
+      "Drowzee": {"always_release": false},
+
+      "// 大鉗蟹": {},
+      "// Krabby": {"release_below_iv": 0.8, "logic": "or"},
+      "Krabby": {"release_below_iv": 0.9, "release_below_cp": 400, "logic": "or"},
+
+      "// 蛋蛋": {},
+      "Exeggcute": {"release_below_iv": 0.8, "logic": "or"},
+
+      "// 卡拉卡拉": {},
+      "// Cubone": {"release_below_iv": 0.8, "logic": "or"},
+      "Cubone": {"release_below_iv": 0.6},
+
+      "// 吉利蛋": {},
+      "Chansey": {"always_release": false},
+
+      "// 獨角金魚": {},
+      "// Goldeen": {"release_below_iv": 0.8, "logic": "or"},
+      "Goldeen": {"release_below_iv": 0.9, "logic": "or"},
+
+      "// 蔓藤怪": {},
+      "Tangela": {"release_below_iv": 0.8, "release_below_cp": 1000, "logic": "or"},
+
+      "// 墨海馬": {},
+      "// Horsea": {"release_below_iv": 0.8, "logic": "or"},
+      "Horsea": {"release_below_iv": 0.9, "release_below_cp": 460, "logic": "or"},
+
+      "// 海星星": {},
+      "// Staryu": {"release_below_iv": 0.8, "logic": "or"},
+      "Staryu": {"release_below_iv": 0.9, "release_below_cp": 100, "logic": "or"},
+
+      "// 鯉魚王": {},
+      "// Magikarp": {"release_below_iv": 0.8, "logic": "or"},
+      "Magikarp": {"release_below_iv": 0.96, "release_below_cp": 180, "logic": "or"},
+
+      "// 可達鴨": {},
+      "// Psyduck": {"release_below_iv": 0.8, "logic": "or"},
+      "Psyduck": {"release_below_iv": 0.8, "release_below_cp": 600, "logic": "or"},
+
+      "// 墨海馬": {},
+      "// Horsea ": {"release_below_iv": 0.8, "logic": "or"},
+      "Horsea": {"release_below_iv": 0.9, "release_below_cp": 350, "logic": "or"},
+
+      "// end": {}
+    },
+    "vips" : {
+         "Any pokemon put here directly force to use Berry & Best Ball to capture, to secure the capture rate!": {},
+        "any": {"catch_above_cp": 1200, "catch_above_iv": 0.9, "logic": "or" },
+        "Lapras": {},
+        "Moltres": {},
+        "Zapdos": {},
+        "Articuno": {},
+
+        "// S-Tier pokemons (if pokemon can be evolved into tier, list the representative)": {},
+        "Mewtwo": {},
+        "Dragonite": {},
+        "Snorlax": {},
+        "// Mew evolves to Mewtwo": {},
+        "Mew": {},
+        "Arcanine": {},
+        "Vaporeon": {},
+        "Gyarados": {},
+        "Exeggutor": {},
+        "Muk": {},
+        "Weezing": {},
+        "Flareon": {},
+
+        "// Custom - Joe": {},
+        "Pikachu": {},
+        "Farfetch'd": {},
+        "Eevee": {},
+        "Growlithe": {},
+        "Snorlax": {},
+        "Dratini": {}
+
+    }
+}
