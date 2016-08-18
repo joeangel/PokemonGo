@@ -22,6 +22,46 @@
         }
       },
       {
+        "type": "SleepSchedule",
+        "config": {
+          "enabled": true,
+          "time": "09:12",
+          "duration":"0:26",
+          "time_random_offset": "00:13",
+          "duration_random_offset": "00:11"
+        }
+      },
+      {
+        "type": "SleepSchedule",
+        "config": {
+          "enabled": true,
+          "time": "11:28",
+          "duration":"2:15",
+          "time_random_offset": "00:18",
+          "duration_random_offset": "00:09"
+        }
+      },
+      {
+        "type": "SleepSchedule",
+        "config": {
+          "enabled": true,
+          "time": "17:00",
+          "duration":"0:30",
+          "time_random_offset": "00:20",
+          "duration_random_offset": "00:40"
+        }
+      },
+      {
+        "type": "SleepSchedule",
+        "config": {
+          "enabled": false,
+          "time": "20:30",
+          "duration":"2:0",
+          "time_random_offset": "00:16",
+          "duration_random_offset": "00:11"
+        }
+      },
+      {
         "type": "CollectLevelUpReward"
       },
       {
